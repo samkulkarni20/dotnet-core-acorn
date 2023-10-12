@@ -11,8 +11,7 @@ Check this link for more details in the official documentation by Microsoft: htt
 containers: {
   web: {
     build: {
-      context: "."
-      dockerfile: "./Dockerfile"
+      context: "./github-app"
     }
    env: {
       if args.dev { 

@@ -1,8 +1,7 @@
 containers: {
   web: {
     build: {
-      context: "."
-      dockerfile: "./Dockerfile"
+      context: "./github-app"
     }
    env: {
       if args.dev { 

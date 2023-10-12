@@ -1,0 +1,14 @@
+containers: {
+  web: {
+    build: {
+      context: "."
+      dockerfile: "./Dockerfile"
+    }
+   env: {
+      if args.dev { 
+        "ASPNETCORE_ENVIRONMENT": "development"
+      }
+   }
+    ports: publish: "80/http"
+  }
+}

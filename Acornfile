@@ -1,9 +1,6 @@
 containers: {
   web: {
-    build: {
-      context: "."
-      dockerfile: "./Dockerfile"
-    }
+   image: "ghcr.io/infracloudio/dotnet-core-acorn/dotnet-core-application:v1"
    env: {
       if args.dev { 
         "ASPNETCORE_ENVIRONMENT": "development"

@@ -34,6 +34,13 @@ Clone this repo to get started and run below command to deploy this project
   acorn run
 ```
 
+Alternatively, you can directly run using the image like below
+
+```bash
+acorn run ghcr.io/infracloudio/dotnet-core-app:v1.0.0
+
+```
+
 ## Explaining the Acornfile
 
 

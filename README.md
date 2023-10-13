@@ -1,92 +1,40 @@
 # Github Explorer
 ======
 
-The sample app uses a search form to browse GitHub repositories by name.
+The web app uses a search form to browse GitHub repositories by name. This sample .NET7 app is part of the official Microsoft Tutorial Documentation on .NET 
 
-Check this link for more details in the official documentation by Microsoft: https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/scaling-aspnet-apps/scaling-aspnet-apps?view=aspnetcore-7.0&tabs=login-azure-cli
+Check this link for more details : https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/scaling-aspnet-apps/scaling-aspnet-apps?view=aspnetcore-7.0&tabs=login-azure-cli
 
+## Deploy the Flask App 
 
-[_Acornfile_](.Acornfile)
-```
-containers: {
-  web: {
-    build: {
-      context: "./github-app"
-    }
-   env: {
-      if args.dev { 
-        "ASPNETCORE_ENVIRONMENT": "development"
-      }
-   }
-    ports: publish: "80/http"
-  }
-}
-```
+You can deploy the sample web app on the Acorn SaaS Platform to test the Application.
 
-## Deploy with Acorn
+### Steps
 
-Make sure to [_Install Acorn_]: <https://docs.acorn.io/installation/installing> before running acorns. 
+1. Login into the Acorn SaaS Platform using the Github Sign-In option with your Github user.
+2. You can select the "Create Acorn" option to create new Acorns and deploy your Application.
+3. Choose the source for deploying your Acorns
+  * Select "From Acorn Image" to deploy the sample Application and select its Image
+  * Provide any random name such as `web-app` and keeping Project's default Region, type in the below Acorn image and choose Create 
+    ```bash
+    ghcr.io/infracloudio/dotnet-core-acorn:v0.0.1
+    ```
+4. Now the sample App is provisioned on Acorn SaaS Platform and is available for upto 2hrs.
+5. Once the Acorn is running, you can access it by clicking the Endpoint or the redirect link.
 
-Clone this repo to get started and run below command to deploy this project
+## Acorn Flask App Details
 
-```bash
-  acorn run
-```
+The Acorn Dashboard is integrated with multiple features such as Events, Logs, Details and accessing the Shell of the Application. Details include the CPU, Memory, Network, Latency, Requests and Errors for the Application.
 
-Alternatively, you can directly run using the image like below
+Explore various available options by clicking the Menu option on your Acorn App.
 
-```bash
-acorn run ghcr.io/infracloudio/dotnet-core-acorn:v0.0.1
+For more details on using the Acorn Dashboard, check this link - 
 
-```
+## Edit the Acorn Application
 
-## Explaining the Acornfile
+You can edit your Acorn's Image and Advanced Options by selecting the Edit option 
 
+## Remove Acorn Application
 
-* `containers` section: describes the set of containers your Acorn app consists of
-
-  * Note: app, db and cache are custom names of your containers
-  * `app` - Our .NET7 application
-    * `build`: build from Dockerfile that we created
-    * `env`: environment variables, statically defined, referencing a secret or referencing an Acorn argument
-    * `ports`: using the publish type, we expose the app inside the cluster but also outside of it using an auto-generated ingress resource
-
-_Details for various parameters for your Acornfile_ : https://docs.acorn.io/reference/acornfile
-
-## Run your Application
-
-To start your Acorn app just run:
-
-```bash
-acorn run -n sample-app . 
-```
-The `-n sample-app` gives this app a specific name so that the rest of the steps can refer to it. If you omit `-n`, a random two-word name will be generated.
-
-## Access your app
-
-Due to the configuration `ports: publish: "8000/http"` under `containers.app`, our web app will be exposed outside of our Kubernetes cluster using the cluster's ingress controller. Checkout the running apps via
-
-```bash
-acorn apps
-```
-
-```bash
-$ acorn apps
-NAME        IMAGE          COMMIT         CREATED     ENDPOINTS                                          MESSAGE
-sample-app   0ed9a2b95c69   114c50666ed9   3m22s ago   http://web-sample-app-98d916c5.local.oss-acorn.io   OK
-
-```
-
-## Development Mode
-
-In development mode, Acorn will watch the local directory for changes and synchronize them to the running Acorn app. In general, changes to the Acornfile are directly synchronized, e.g. adding environment variables, etc. Depending on the change, the deployed containers will be recreated.
-
-```bash
-acorn dev -n sample-app
-```
-
-
-
-
-
+To Remove the Acorn, select the Remove option from your Acorn's Menu.
 

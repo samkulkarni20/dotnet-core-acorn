@@ -1,3 +1,7 @@
+name:        "DotNet Core Sample Acorn"
+description: "Acorn running a sample .Net Core app"
+readme:      "./README.md"
+
 containers: {
   web: {
     build: {
